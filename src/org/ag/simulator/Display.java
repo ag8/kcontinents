@@ -36,7 +36,7 @@ public class Display extends JPanel {
 
     @Contract("_ -> !null")
     private Color getColor(int value) {
-        int red = value * 255 / 5;
+        int red = value * 255 / 99;
         if (red > 255) red = 255;
         return new Color(red, 0, red);
     }
