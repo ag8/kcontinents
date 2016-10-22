@@ -59,7 +59,7 @@ public class Simulator {
             current.increment();
             updateDirection();
 
-            if (currentPosition[0] % 4 == 0) {
+            if (currentPosition[0] % 2 == 0) {
                 currentPosition[1] += (int) (Math.floor(current.getValue())) - (int) (Math.floor(Math.sqrt(currentPosition[1])));
                 if (currentPosition[0] < 0) {
                     currentPosition[0] = 0;
