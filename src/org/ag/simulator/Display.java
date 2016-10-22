@@ -36,9 +36,9 @@ public class Display extends JPanel {
 
     @Contract("_ -> !null")
     private Color getColor(int value) {
-        int red = value * 255 / 2;
+        int red = value * 255 / 5;
         if (red > 255) red = 255;
-        return new Color(red, 0, 0);
+        return new Color(red, 0, red);
     }
 
     public void update(Cell[][] newGrid) {
