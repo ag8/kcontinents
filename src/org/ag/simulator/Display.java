@@ -10,11 +10,19 @@ import java.awt.*;
 public class Display extends JPanel {
     private static int DIM;
     private static Cell[][] grid;
+    private static int[] currentPosition;
+    private int darkness = 30;
 
     public Display() {
         DIM = Config.DIM;
+
         grid = new Cell[DIM][DIM];
         grid = SimulatorUtils.fillGrid(grid);
+
+        currentPosition = new int[]{0, 0};
+
+
+        this.setBackground(Color.BLACK);
     }
 
     protected void paintComponent(Graphics g) {
@@ -24,26 +32,21 @@ public class Display extends JPanel {
 //        g.setColor(Color.RED);
 //        g.fillRect(230,80,10,10);
 
-        for (int i = 0; i < DIM; i++) {
-            for (int j = 0; j < DIM; j++) {
-//                g.setColor(getColor(grid[i][j].getValue()));
-                Color c = getColor(grid[i][j].getValue());
-                g.setColor(c);
-                g.fillRect(i * 10, j * 10, 10, 10);
-            }
-        }
+        g.setColor(getColor(grid[currentPosition[0]][currentPosition[1]].getValue()));
+        g.fillRect(currentPosition[0] * 10, currentPosition[1] * 10, 10, 10);
     }
 
     @Contract("_ -> !null")
     private Color getColor(int value) {
-        int red = value * 255 / 99;
+        int red = value * 255 / darkness;
         if (red > 255) red = 255;
         return new Color(red, 0, red);
     }
 
-    public void update(Cell[][] newGrid) {
+    public void update(Cell[][] newGrid, int[] newCurrentPosition) {
         grid = newGrid.clone();
-        repaint();
+        currentPosition = newCurrentPosition;
+        paintImmediately(currentPosition[0] * 10, currentPosition[1] * 10, 10, 10);
     }
 
     public Dimension getPreferredSize() {

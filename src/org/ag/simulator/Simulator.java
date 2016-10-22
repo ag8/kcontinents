@@ -96,8 +96,8 @@ public class Simulator {
 //        dir = ++dir % 4;
         dir++;
         dir %= 4;
-        dir += 10;
-        dir %= 4;
+//        dir += 10;
+//        dir %= 4;
     }
 
     private static Cell get(Cell[][] grid, int[] coords) {

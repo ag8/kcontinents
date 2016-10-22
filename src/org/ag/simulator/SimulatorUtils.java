@@ -32,7 +32,7 @@ public class SimulatorUtils {
     }
 
     public static void display(Cell[][] grid, int q, int[] currentPosition) {
-        display.update(grid);
+        display.update(grid, currentPosition);
         frame.setTitle("Kölner Continents: Iteration (" + (Config.ITERATIONS - q + 1) + "/" + Config.ITERATIONS + "), at cell (" + currentPosition[0] + "," + currentPosition[1] + ").");
     }
 
