@@ -68,7 +68,9 @@ public class Simulator {
 
 
             Thread.sleep(33);
-            SimulatorUtils.display(grid, q, currentPosition);
+            if (q % Config.FRAMESKIP == 0) {
+                SimulatorUtils.display(grid, q, currentPosition);
+            }
         }
     }
 
