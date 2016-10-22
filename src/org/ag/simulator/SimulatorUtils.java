@@ -9,8 +9,7 @@ import java.awt.*;
 
 public class SimulatorUtils {
     static JFrame frame = new JFrame();
-    static JPanel panel = new JPanel();
-    static JTextArea output = new JTextArea();
+    static Display display = new Display();
 
     protected static Cell[][] fillGrid(Cell[][] toFill) {
         for (int i = 0; i < Simulator.DIM; i++) {
@@ -33,9 +32,7 @@ public class SimulatorUtils {
     }
 
     public static void display(Cell[][] grid, int q, int[] currentPosition) {
-        output.setText(getDisplayText(grid, currentPosition));
-        output.repaint();
-
+        display.update(grid);
         frame.setTitle("Kölner Continents: Iteration (" + (Config.ITERATIONS - q + 1) + "/" + Config.ITERATIONS + "), at cell (" + currentPosition[0] + "," + currentPosition[1] + ").");
     }
 
@@ -63,16 +60,10 @@ public class SimulatorUtils {
     }
 
     public static void initDisplay() {
-        frame.getContentPane().add(panel);
+        frame.getContentPane().add(display);
         frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         frame.setTitle("Kölner Continents: Iteration (0/" + Config.ITERATIONS + "), at cell (0,0).");
         frame.setLocationRelativeTo(null);
-
-        panel.setLayout(new FlowLayout());
-
-        output = new JTextArea(12, 30);
-        output.setFont(new Font("Courier New", Font.PLAIN, 10));
-        panel.add(output);
 
         frame.pack();
         frame.setVisible(true);

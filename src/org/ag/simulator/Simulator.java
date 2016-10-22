@@ -77,7 +77,7 @@ public class Simulator {
             }
 
 
-//            Thread.sleep(100);
+            Thread.sleep(100);
             SimulatorUtils.display(grid, q, currentPosition);
         }
     }
